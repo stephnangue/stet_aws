@@ -36,6 +36,7 @@ pipeline {
             steps{
                 script{
                     def handle = triggerRemoteJob job: 'http://172.16.32.65:8080/job/SABr%20CD/job/main', auth: TokenAuth(apiToken: '1142522db6c8940099b7c23a269d451036', userName: 'stephane')
+                  
                 } 
             }          
         }
