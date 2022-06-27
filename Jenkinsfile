@@ -36,6 +36,7 @@ pipeline {
             steps{
                 script{
                     def handle = triggerRemoteJob job: 'SABr%20CD/main', remoteJenkinsName: 'remoteJenkins'
+                  
                 } 
             }          
         }
