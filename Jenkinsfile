@@ -35,7 +35,13 @@ pipeline {
         stage('Tigger CD') {
             steps{
                 script{
-                  sh "curl -X POST http://stephane:1142522db6c8940099b7c23a269d451036@172.16.32.65:8080/job/SABr%20CD/job/main/build"
+                  def handle = triggerRemoteJob(
+                      blockBuildUntilComplete: true,
+                      job: 'https://172.16.32.65:8080/job/SABr%20CD/job/main',
+                      auth: TokenAuth(apiToken: '1142522db6c8940099b7c23a269d451036',
+                      userName: 'stephane')
+                  def results = handle.readJsonFileFromBuildArchive('build-results.json')
+                  echo 'Result: ' + results.toString()
                 } 
             }          
         }
