@@ -3,25 +3,39 @@ pipeline {
 
     stages {
         stage('Checkout') {
-            checkout scm
+            steps{
+                checkout scm
+            }
         }
         stage('Quality Test') {
-            echo "Running Quality tests"
+            steps{
+                echo "Running Quality tests"
+            }
         }
         stage('Unit Test') {
-            echo "Running Unit tests"
+            steps{
+                echo "Running Unit tests"
+            }
         }
         stage('Security Test') {
-            echo "Running Security tests"
+            steps{
+                echo "Running Security tests"
+            }          
         }
         stage('Build') {
-            echo "Building artifact"
+            steps{
+                echo "Building artifact"
+            }          
         }
         stage('Push') {
-            echo "Storing artifact"
+            steps{
+                echo "Storing artifact"
+            }          
         }
         stage('Tigger CD') {
-            echo "Tiggering CD Pipeline"
+            steps{
+                echo "Tiggering CD Pipeline"
+            }          
         }
     }
 }
