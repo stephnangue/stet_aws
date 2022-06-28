@@ -2,11 +2,6 @@ pipeline {
   agent any
 
     stages {
-        stage('Checkout') {
-            steps{
-                checkout scm
-            }
-        }
         stage('Quality Test') {
             steps{
                 echo "Running Quality tests"
