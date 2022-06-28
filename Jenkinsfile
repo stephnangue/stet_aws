@@ -28,10 +28,10 @@ pipeline {
             }          
         }
         stage('Trigger CD') {
+            environment {
+                TOKEN = credentials('remote_jenkins_token')
+            }
             steps{
-                environment {
-                    TOKEN = credentials('remote_jenkins_token')
-                }
                 script{
                         //WARNING -> Don't forget to allow the use of a static method in a jenkins script (Administrer Jenkins -> In-process Script Approval)
                         def token = hudson.util.Secret.fromString("$TOKEN")
