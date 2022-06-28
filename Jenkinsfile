@@ -37,7 +37,8 @@ pipeline {
                         def handle = triggerRemoteJob(
                             job: 'http://172.16.32.65:8080/job/SABr%20CD/job/'+ env.BRANCH_NAME,
                             auth: TokenAuth(apiToken: token, userName: 'stephane'),
-                            parameters: 'SABR_MOTEUR_VERSION=1.2.14\nSABR_IHM_VERSION=2.5.34\nSIMULATEUR_VERSION=12.4.23')
+                            parameters: 'SABR_MOTEUR_VERSION=1.2.14\nSABR_IHM_VERSION=2.5.34\nSIMULATEUR_VERSION=12.4.23',
+                            enhancedLogging: true)
                     }
                 } 
             }          
