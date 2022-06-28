@@ -29,8 +29,10 @@ pipeline {
         }
         stage('Trigger CD') {
             steps{
+                environment {
+                    TOKEN = credentials('remote_jenkins_token')
+                }
                 script{
-                    withCredentials([string(credentialsId: 'remote_jenkins_token', variable: 'TOKEN')]) {
                         //WARNING -> Don't forget to allow the use of a static method in a jenkins script (Administrer Jenkins -> In-process Script Approval)
                         def token = hudson.util.Secret.fromString("$TOKEN")
                       
@@ -39,7 +41,6 @@ pipeline {
                             auth: TokenAuth(apiToken: token, userName: 'stephane'),
                             parameters: 'SABR_MOTEUR_VERSION=1.2.14\nSABR_IHM_VERSION=2.5.34\nSIMULATEUR_VERSION=12.4.23',
                             enhancedLogging: true)
-                    }
                 } 
             }          
         }
