@@ -27,7 +27,7 @@ pipeline {
                 echo "Storing artifact"
             }          
         }
-        stage('Tigger CD') {
+        stage('Trigger CD') {
             steps{
                 script{
                     withCredentials([string(credentialsId: 'remote_jenkins_token', variable: 'TOKEN')]) {
