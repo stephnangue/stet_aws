@@ -36,9 +36,9 @@ pipeline {
             steps{
                 script{
                     withCredentials([string(credentialsId: 'remote_jenkins_token', variable: 'TOKEN')]) {
-                        //WARNING -> this is not secure : tokens should not be used as plain text in the source code
                         //WARNING -> Don't forget to allow the use of a static method in a jenkins script (Administrer Jenkins -> In-process Script Approval)
                         def token = hudson.util.Secret.fromString("$TOKEN")
+                      
                         def handle = triggerRemoteJob(
                             job: 'http://172.16.32.65:8080/job/SABr%20CD/job/'+ env.BRANCH_NAME,
                             auth: TokenAuth(apiToken: token, userName: 'stephane'),
